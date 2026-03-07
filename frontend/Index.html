@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Algorithm Visualizer</h1>
+            <p>Watch sorting algorithms come to life!</p>
+        </header>
+
+        <div class="controls">
+            <select id="algorithmSelect">
+                <option value="bubble">Bubble Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="merge">Merge Sort</option>
+            </select>
+
+            <button onclick="generateArray()" class="btn-primary">🔄 Generate New Array</button>
+            <button onclick="startVisualization()" class="btn-success" id="startBtn">▶ Start</button>
+            <button onclick="pauseVisualization()" class="btn-warning" id="pauseBtn" disabled>⏸ Pause</button>
+            <button onclick="stepForward()" class="btn-info" id="stepBtn" disabled>⏩ Step</button>
+            <button onclick="resetVisualization()" class="btn-secondary">↺ Reset</button>
+
+            <div class="speed-control">
+                <label>Speed:</label>
+                <input type="range" id="speedSlider" min="100" max="2000" value="500" step="100">
+                <span id="speedValue">500ms</span>
+            </div>
+        </div>
+
+        <div class="visualization-area" id="visualization">
+            <!-- Bars will be rendered here -->
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-card">
+                <div class="stat-label">Comparisons</div>
+                <div class="stat-value" id="comparisons">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Swaps</div>
+                <div class="stat-value" id="swaps">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Step</div>
+                <div class="stat-value" id="currentStep">0/0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Message</div>
+                <div class="stat-value" id="message">Ready</div>
+            </div>
+        </div>
+
+        <div class="array-input">
+            <h3>Custom Array</h3>
+            <div class="input-group">
+                <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g., 5,2,9,1,7)">
+                <button onclick="setCustomArray()" class="btn-primary">Set Array</button>
+            </div>
+        </div>
+    </div>
+
+   <div class="algorithm-tabs">
+        <button class="tab-btn active" onclick="showSorting()">Sorting</button>
+        <button class="tab-btn" onclick="showTrees()">Trees</button>
+    </div>
+    
+    <div id="treeControls" style="display: none;">
+        <select id="treeAlgorithmSelect">
+            <option value="bst-insert">BST Insertion</option>
+            <option value="bst-search">BST Search</option>
+            <option value="bst-delete">BST Deletion</option>
+            <option value="inorder">In-order Traversal</option>
+            <option value="preorder">Pre-order Traversal</option>
+            <option value="postorder">Post-order Traversal</option>
+            <option value="bfs">BFS / Level Order</option>
+            <option value="avl-insert">AVL Tree (with rotations)</option>
+            <option value="heap-insert">Heap Insert</option>
+        </select>
+        
+        <div class="tree-input-group">
+            <div class="input-row">
+                <input type="number" id="treeValue" placeholder="Enter value (e.g., 42)" 
+                       onkeypress="handleTreeInputKeyPress(event)" autofocus>
+                <button onclick="insertTreeValue()" class="btn-primary" id="insertBtn">Insert/Search</button>
+                <button onclick="insertMultipleValues()" class="btn-info" id="multiInsertBtn">Insert Sample</button>
+                <button onclick="resetTree()" class="btn-secondary" id="resetTreeBtn">↺ Reset Tree</button>
+            </div>
+            <div class="input-help">
+                <small>💡 Press Enter to quickly insert/search values</small>
+            </div>
+        </div>
+        
+        <div class="tree-info-panel">
+            <div class="tree-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Height:</span>
+                    <span class="stat-value" id="treeHeight">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Nodes:</span>
+                    <span class="stat-value" id="nodeCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value" id="treeType">BST</span>
+                </div>
+            </div>
+            <div class="tree-message" id="treeMessage">
+                👆 Start by inserting a value
+            </div>
+        </div>
+    </div>
+    
+    <div class="tree-canvas-container">
+        <canvas id="treeCanvas" width="900" height="500"></canvas>
+        <div class="canvas-controls">
+            <button onclick="fitTreeToCanvas()" class="btn-sm">🔍 Fit to view</button>
+            <button onclick="resetTreeView()" class="btn-sm">↺ Reset view</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
