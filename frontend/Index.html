@@ -5,12 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algorithm Visualizer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="arcade.css">
 </head>
 <body>
+
+    <!-- ==== Arcade top bar: login status lives here ==== -->
+    <div class="dream-topbar">
+        <div class="brand">🕹️ DreamSort Arcade</div>
+        <div id="authStatusBox"></div>
+    </div>
+
+    <!-- ==== Arcade panels: saved arrays + leaderboard ==== -->
+    <div class="two-col">
+        <div class="dream-window">
+            <div class="titlebar">
+                <span class="dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </span>
+                💾 My Saved Arrays
+            </div>
+            <div class="window-body">
+                <button class="btn-primary btn-arcade" onclick="saveCurrentArray()">⭐ Save Current Array</button>
+                <div id="saveArrayStatus" style="min-height: 18px; font-size: 0.85em; margin-top: 6px;"></div>
+                <div id="savedArraysList" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+
+        <div class="dream-window">
+            <div class="titlebar">
+                <span class="dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </span>
+                🏆 Leaderboard
+            </div>
+            <div class="window-body">
+                <div class="leaderboard-filters">
+                    <select id="leaderboardAlgo" onchange="loadLeaderboard()">
+                        <option value="bubble">Bubble</option>
+                        <option value="merge">Merge</option>
+                        <option value="quick">Quick</option>
+                    </select>
+                    <input type="number" id="leaderboardSize" placeholder="Array size" min="2"
+                           onchange="loadLeaderboard()">
+                </div>
+                <div id="leaderboardList"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
-            <h1>📊 Algorithm Visualizer</h1>
-            <p>Watch sorting algorithms come to life!</p>
+            <h1> Algorithm Visualizer</h1>
+            <p>sorting algorithms </p>
         </header>
 
         <div class="controls">
@@ -125,6 +175,32 @@
         </div>
     </div>
 
+    <!-- ==== Login / Register modal ==== -->
+    <div class="auth-modal-backdrop" id="authModal">
+        <div class="dream-window auth-modal">
+            <div class="titlebar">
+                <span class="dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </span>
+                Player Login
+                <span class="auth-close" onclick="closeAuthModal()">✕</span>
+            </div>
+            <div class="auth-tabs">
+                <button id="authTabLogin" class="active" onclick="switchAuthTab('login')">Log In</button>
+                <button id="authTabRegister" onclick="switchAuthTab('register')">New Player</button>
+            </div>
+            <form id="authModalForm" class="auth-modal-body" data-mode="login" onsubmit="submitAuthForm(event)">
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Password" required minlength="6">
+                <div class="auth-error" id="authError"></div>
+                <button type="submit" class="btn-primary btn-arcade" id="authSubmitBtn" style="width: 100%;">Log In</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>

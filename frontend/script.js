@@ -61,7 +61,7 @@ function setCustomArray() {
     }
 }
 
-// Render bars in the visualization area
+// Render bars in the visualization area (UPDATED FOR GLASSY UI)
 function renderBars(array, compareIdx1, compareIdx2) {
     const maxValue = Math.max(...array);
     
@@ -73,8 +73,9 @@ function renderBars(array, compareIdx1, compareIdx2) {
             barClass += ' comparing';
         }
         
+        // Added 'margin: 0 6px;' and width: 40px to ensure spacing for the new pill-shaped bars
         return `
-            <div class="${barClass}" style="height: ${height}px">
+            <div class="${barClass}" style="height: ${height}px; width: 40px; margin: 0 6px;">
                 <span class="bar-value">${value}</span>
             </div>
         `;
@@ -267,13 +268,6 @@ function showSorting() {
     
     // Show sorting visualization
     document.getElementById('visualization').style.display = 'flex';
-}
-
-// Show graphs (placeholder)
-function showGraphs() {
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    alert('Graph algorithms coming soon!');
 }
 
 // Update tree type display
@@ -835,7 +829,6 @@ async function resetTree() {
 }
 
 // Make sure to expose functions to global scope
-// Make sure to expose functions to global scope
 window.generateArray = generateArray;
 window.setCustomArray = setCustomArray;
 window.startVisualization = startVisualization;
@@ -851,5 +844,6 @@ window.handleTreeInputKeyPress = handleTreeInputKeyPress;
 window.insertMultipleValues = insertMultipleValues;
 window.fitTreeToCanvas = fitTreeToCanvas;
 window.resetTreeView = resetTreeView;
+
 // Run connection test
 testConnection();

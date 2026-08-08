@@ -1,0 +1,225 @@
+/* ============================================================
+   Arcade layer — bold Y2K, matches the new styles.css tokens.
+   No blur, no glass. Flat color + thick black border + offset
+   hard shadow on everything, like sticker/cartridge UI.
+   ============================================================ */
+
+.dream-topbar {
+    max-width: 1400px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--ink);
+    border: var(--border);
+    border-radius: 16px;
+    padding: 14px 22px;
+    box-shadow: var(--shadow-md);
+}
+
+.dream-topbar .brand {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--teal);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.player-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #16C784;
+    border: 1.5px solid var(--ink);
+    display: inline-block;
+}
+
+.btn-arcade {
+    border-radius: 999px !important;
+    font-weight: 700;
+    padding: 9px 20px !important;
+}
+
+.btn-tiny {
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-size: 0.8em;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+/* ---- Window-chrome panel ---- */
+.dream-window {
+    background: var(--card);
+    border: var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.dream-window .titlebar {
+    background: var(--lilac);
+    color: white;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: var(--border);
+}
+
+.titlebar .dots { display: flex; gap: 6px; }
+.titlebar .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); }
+.dot-red { background: var(--hot-pink); }
+.dot-yellow { background: var(--yellow); }
+.dot-green { background: var(--teal); }
+
+.dream-window .window-body { padding: 18px; }
+
+/* ---- Auth modal ---- */
+.auth-modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 18, 26, 0.75);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.auth-modal {
+    width: 340px;
+    max-width: 90vw;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: var(--border);
+}
+.auth-tabs button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 0;
+    background: var(--cream);
+    box-shadow: none;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+.auth-tabs button.active {
+    background: var(--yellow);
+    color: var(--ink);
+}
+
+.auth-modal-body { padding: 20px; }
+.auth-modal-body input {
+    width: 100%;
+    padding: 11px 13px;
+    margin-bottom: 12px;
+    border: var(--border);
+    border-radius: 10px;
+    font-size: 0.95em;
+    font-family: inherit;
+}
+.auth-error { color: var(--hot-pink); font-weight: 700; font-size: 0.85em; min-height: 18px; margin-bottom: 6px; }
+.auth-close {
+    margin-left: auto;
+    cursor: pointer;
+    font-weight: 800;
+    padding: 2px 8px;
+    background: var(--hot-pink);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    color: white;
+}
+
+/* ---- Saved arrays list ---- */
+.array-chip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 9px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: transform 0.08s ease;
+}
+.array-chip:hover { transform: translate(-1px, -1px); }
+.array-chip:active { transform: translate(1px, 1px); box-shadow: none; }
+.chip-label { font-weight: 700; color: var(--ink); }
+.chip-values { font-family: 'JetBrains Mono', monospace; font-size: 0.75em; opacity: 0.65; }
+
+.empty-note { font-size: 0.85em; font-weight: 600; opacity: 0.6; padding: 8px 0; }
+
+/* ---- Leaderboard ---- */
+.leaderboard-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+.leaderboard-filters select,
+.leaderboard-filters input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: var(--border);
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.leader-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+}
+.leader-first {
+    background: var(--yellow);
+    box-shadow: 3px 3px 0 var(--ink);
+    font-weight: 800;
+}
+.leader-rank { text-align: center; font-size: 1.1em; }
+.leader-name { font-weight: 700; }
+.leader-stat { font-family: 'JetBrains Mono', monospace; font-size: 0.78em; opacity: 0.8; }
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
