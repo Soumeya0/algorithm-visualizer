@@ -7,7 +7,7 @@
 // NOTE: script.js already declares its own API_BASE = 'http://localhost:8080/api'
 // (with /api baked in). To avoid a duplicate-const crash, this file uses its own
 // name and includes /api explicitly in every path below.
-const ARCADE_API_BASE = "http://localhost:8080";
+const ARCADE_API_BASE = 'https://algorithm-visualizer-production-e2a0.up.railway.app/api';
 
 // ---- In-memory auth state ----
 let authToken = null;      // the JWT itself — memory only

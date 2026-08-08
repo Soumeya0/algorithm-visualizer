@@ -1,5 +1,5 @@
 // API configuration
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = 'https://algorithm-visualizer-production-e2a0.up.railway.app/api';
 
 // State variables
 let currentSteps = [];
