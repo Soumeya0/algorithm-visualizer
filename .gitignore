@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Local-only config (contains local DB credentials)
+src/main/resources/application-local.properties
